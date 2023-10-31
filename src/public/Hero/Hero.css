@@ -1,0 +1,43 @@
+:root{
+    overflow-x: hidden;
+}
+
+.title{
+    /* display: block; */
+    width: 500px;
+    margin-left: 130px;
+    
+    
+      
+}
+.manage{
+    margin-left: 130px;
+
+}
+span{
+    color: #974FD0;
+}
+.button{
+    color: #974FD0;
+
+}
+
+@media (max-width: 768px){
+    .title{
+        /* display: block; */
+        width: 300px;
+        margin-left: 10px;
+        
+        
+          
+    }
+    .manage{
+        margin-top: 12px;
+        margin-left: 10px;
+    
+    }
+    .hero-pics{
+        width: 300px;
+    }
+
+}

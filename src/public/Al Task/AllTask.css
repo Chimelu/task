@@ -1,0 +1,31 @@
+
+/* @media (max-width: 768px){
+    .cont{
+        height: 500px;
+        
+
+    }
+    
+} */
+.del{
+    
+    border: 45px;
+    color: brown;
+    border-radius: 8px;
+    
+  
+   
+}
+/* Custom CSS */
+.del {
+    border: 2px solid purple; /* Red border */
+    color: #000; /* Black text color */
+  }
+  
+  /* Apply the custom styles to the button */
+  .btn.btn-light.del {
+    border-radius: 8px; /* Rounded corners */
+
+  }
+  
+  
