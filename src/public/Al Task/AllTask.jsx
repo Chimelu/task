@@ -3,17 +3,21 @@ import Plus from '../../assets/Vector (1).svg'
 import Edit from '../../assets/clarity_note-edit-line.svg'
 import Delete from '../../assets/fluent_delete-24-regular.svg'
 import './AllTask.css'
+import { Link } from 'react-router-dom'
 
 const New = () => {
   return (
     <div className='container'>
       <div className='mt-3 d-flex justify-content-between align-items-center'>
         <h2>My Tasks</h2>
+        <Link className='text-decoration-none' to='/new'>
+
         <h5 className='d-flex gap-2'>
 
           <img src={Plus} alt="" />
           <span className='ml-3'>Add new Task</span>
         </h5>
+        </Link>
       </div>
         <div className="mt-5 border  rounded">
             <div className="d-flex cont justify-content-between align-items-center px-2" >
