@@ -31,5 +31,11 @@
     outline: none;
     height: 10rem;
 }
-  
+.btn1{
+  background: #974FD0;
+  /* background-color: purple; */
+  font-family: Signika Negative;
+  font-weight: 500;
+}
+
   

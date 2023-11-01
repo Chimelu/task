@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 const Hero = () => {
   return (
     <div className=' container-fluid row justify-content-center align-items-center hero'>
-        <div className=' col-lg-6 left-hero  '> 
+        <div className=' col-lg-6 mx-5 left-hero  '> 
         <h2 className='manage'>Manage your Tasks on <br /> <span>Task duty</span></h2>
         <div className='title'>
 

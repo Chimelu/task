@@ -1,13 +1,12 @@
 import React from 'react'
 import arrow from '../../assets/arrow.svg';
-import './Newtask.css'
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 
 
 
 
-const Newtask = () => {
+const Edittask = () => {
   const scrollToTop =()=>{
     window.scroll({top:0, behavior:'smooth'})
   };
@@ -16,7 +15,7 @@ const Newtask = () => {
   return (
     <div className='container mt-3'>
       <div>
-      <Link className='text-decoration-none text-dark' to='/all'> <h2 className=''> <span ><img src={arrow} alt="" /></span> New Task</h2></Link>
+      <Link className='text-decoration-none text-dark' to='/all'> <h2 className=''> <span ><img src={arrow} alt="" /></span> Edit Task</h2></Link>
       </div>
       <div className="fieldset-container m-5 h-25">
       <h5 className="fieldset-title"> Task Title</h5>
@@ -45,4 +44,4 @@ const Newtask = () => {
   )
 }
 
-export default Newtask
+export default Edittask
