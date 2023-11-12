@@ -29,9 +29,13 @@ const Newtask = () => {
       
     </div>
     <div className="fieldset-container m-5 h-25">
-      <h5 className="fieldset-title"> Tags</h5>
-      <input type="text" className=' w-100' placeholder='E.g Project Defense, Assignment ...' />
-      
+    <h5 className="fieldset-title"> Tags</h5>
+     <select id="priority" name="priority" className=' w-100 border-none border-white' >
+     <option value="urgent">Urgent</option>
+     <option value="important">Important</option>
+    
+     </select>
+     
     </div>
     <div className="d-grid ">
       <Button variant="" className='btn1 text-light' size="lg">
