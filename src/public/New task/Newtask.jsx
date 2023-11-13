@@ -4,6 +4,7 @@ import './Newtask.css';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
+// import fetchConfig from '../fetch/Fetch';
 
 
 
@@ -36,13 +37,13 @@ const Newtask = () => {
       console.error('Error fetching configuration:', error);
     }
   };
+ 
+ 
+ 
   
-  const handleDoneClick = () => {
-    // Fetch the configuration before calling the API
-    fetchConfig();
-  };
-  
+
   const sendTaskToServer = async () => {
+      
     try {
       const response = await fetch('http://localhost:5000/api/v1/tasks', {
         method: 'POST',
@@ -70,6 +71,11 @@ const Newtask = () => {
       console.error('Error adding task:', error);
     }
   };
+  const handleDoneClick = () => {
+    // Fetch the configuration before calling the API
+    fetchConfig();
+  };
+
 
   return (
     <div className='container mt-3'>
