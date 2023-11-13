@@ -3,8 +3,12 @@ import arrow from '../../assets/arrow.svg';
 import './Newtask.css';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
+import { useNavigate } from 'react-router-dom';
+
+
 
 const Newtask = () => {
+  const navigate = useNavigate();
   const [taskTittle, setTaskTitle] = useState('');
   const [description, setDescription] = useState('');
   const [tags, setSelectedPriority] = useState('');
@@ -12,7 +16,7 @@ const Newtask = () => {
   const scrollToTop = () => {
     window.scroll({ top: 0, behavior: 'smooth' });
   };
-
+  
   const handlePriorityChange = (event) => {
     setSelectedPriority(event.target.value);
   };
@@ -22,11 +26,12 @@ const Newtask = () => {
       const response = await fetch('http://localhost:5000/api/config');
       const config = await response.json();
   
-      // Use the configuration in your React component
+     
       console.log('MongoDB URI:', config.mongoURI);
   
-      // Now you can use config.mongoURI in your sendTaskToServer function
+    
       sendTaskToServer(config.mongoURI);
+    
     } catch (error) {
       console.error('Error fetching configuration:', error);
     }
@@ -54,7 +59,8 @@ const Newtask = () => {
       if (response.ok) {
         // Task added successfully
         console.log('Task added successfully');
-        window.location.reload()
+        navigate('/all');
+      
        
       } else {
        
@@ -113,7 +119,7 @@ const Newtask = () => {
       <div className='d-grid '>
         <Button
           variant=''
-          className='btn1 text-light'
+          className='btn btn1 text-light'
           size='lg'
           onClick={handleDoneClick}
          

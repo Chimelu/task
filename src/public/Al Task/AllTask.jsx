@@ -66,9 +66,13 @@ const AllTasks = () => {
           </h5>
         </Link>
       </div>
+      <div className='d-flex flex-column-reverse  '>
+
       {tasks.map((task) => (
-        <div key={task._id} className='mt-5 border rounded'>
-          <div className='d-flex cont justify-content-between align-items-center px-2'>
+       
+
+        <div key={task._id} className='mt-5 border rounded  '>
+          <div className='d-flex cont justify-content-between align-items-center   px-2'>
           <h4 className={task.tags === 'important' ? 'text-success ms-3' : task.tags === 'urgent' ? 'text-danger ms-3' : ''}>
         {task.tags}
       </h4>
@@ -100,7 +104,9 @@ const AllTasks = () => {
             <p className='fs-3'>{task.description}</p>
           </div>
         </div>
+        
       ))}
+      </div>
       <Link onClick={scrollToTop}>
         <p className='text-center fs-4 mt-5' style={{ color: '#974FD0' }}>
           Back to Top
