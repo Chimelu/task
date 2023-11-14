@@ -14,7 +14,7 @@ const AllTasks = () => {
   }, []);
   const deleteTask = async (taskID) => {
   try {
-    const response = await fetch(`http://localhost:5000/api/v1/tasks/${taskID}`, {
+    const response = await fetch(`https://task-jce2.onrender.com/api/v1/tasks/${taskID}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -38,7 +38,9 @@ const AllTasks = () => {
 
   const fetchTasks = async () => {
     try {
-      const response = await fetch('https://backtask-gkuo.onrender.com/api/v1/tasks');
+
+
+      const response = await fetch('https://task-jce2.onrender.com/api/v1/tasks');
       if (response.ok) {
         const data = await response.json();
         setTasks(data.tasks); 

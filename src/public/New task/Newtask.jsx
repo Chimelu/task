@@ -45,7 +45,7 @@ const Newtask = () => {
   const sendTaskToServer = async () => {
       
     try {
-      const response = await fetch('https://backtask-gkuo.onrender.com/api/v1/tasks', {
+      const response = await fetch('https://task-jce2.onrender.com/api/v1/tasks', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -34,7 +34,7 @@ const Edittask = () => {
 
   const handleDoneClick = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/api/v1/tasks/${id}`, {
+      const response = await fetch(`https://task-jce2.onrender.com/api/v1/tasks/${id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
