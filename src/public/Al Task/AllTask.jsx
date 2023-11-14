@@ -27,7 +27,7 @@ const AllTasks = () => {
       // You might want to update your UI to reflect the deleted task
     } else {
       console.error('Failed to delete task');
-      // Handle error or show an error message to the user
+     
     }
   } catch (error) {
     console.error('Error deleting task:', error);
@@ -38,7 +38,7 @@ const AllTasks = () => {
 
   const fetchTasks = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/v1/tasks');
+      const response = await fetch('https://backtask-gkuo.onrender.com/api/v1/tasks');
       if (response.ok) {
         const data = await response.json();
         setTasks(data.tasks); 
@@ -73,7 +73,7 @@ const AllTasks = () => {
 
         <div key={task._id} className='mt-5 border rounded  '>
           <div className='d-flex cont justify-content-between align-items-center   px-2'>
-          <h4 className={task.tags === 'important' ? 'text-success ms-3' : task.tags === 'urgent' ? 'text-danger ms-3' : ''}>
+          <h4 className={task.tags === 'important' ? 'text-success ms-1' : task.tags === 'urgent' ? 'text-danger ms-3' : ''}>
         {task.tags}
       </h4>
             {/* <h4 className='text-danger ms-3'>{task.tags}</h4> */}

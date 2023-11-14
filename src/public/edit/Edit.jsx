@@ -2,10 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import arrow from '../../assets/arrow.svg';
+import { useNavigate } from 'react-router-dom';
 
 const Edittask = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [task, setTask] = useState({
+   
     taskTittle: '',
     description: '',
     tags: '',
@@ -14,7 +17,7 @@ const Edittask = () => {
   useEffect(() => {
     const fetchTaskDetails = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/v1/tasks/${id}`);
+        const response = await fetch(`https://backtask-gkuo.onrender.com/api/v1/tasks/${id}`);
         if (response.ok) {
           const data = await response.json();
           setTask(data.task);
@@ -45,7 +48,9 @@ const Edittask = () => {
 
       if (response.ok) {
         console.log('Task updated successfully');
-        // Redirect or perform any other actions after successful update
+        // redirect to all 
+        navigate('/all');
+   
       } else {
         console.error('Failed to update task');
             }

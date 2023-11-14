@@ -24,7 +24,7 @@ const Newtask = () => {
 
   const fetchConfig = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/config');
+      const response = await fetch('https://backtask-gkuo.onrender.com/api/config');
       const config = await response.json();
   
      
@@ -45,7 +45,7 @@ const Newtask = () => {
   const sendTaskToServer = async () => {
       
     try {
-      const response = await fetch('http://localhost:5000/api/v1/tasks', {
+      const response = await fetch('https://backtask-gkuo.onrender.com/api/v1/tasks', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -64,6 +64,7 @@ const Newtask = () => {
       
        
       } else {
+        alert('Task input cant be empty')
        
         console.error('Error adding task:', response.statusText);
       }
@@ -116,7 +117,7 @@ const Newtask = () => {
           value={tags}
           onChange={handlePriorityChange}
         >
-         
+          <option value='Choose'>Urgent/important</option>
           <option value='urgent'>Urgent</option>
           <option value='important'>Important</option>
         </select>
