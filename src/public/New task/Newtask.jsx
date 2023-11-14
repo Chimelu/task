@@ -24,7 +24,7 @@ const Newtask = () => {
 
   const fetchConfig = async () => {
     try {
-      const response = await fetch('https://backtask-gkuo.onrender.com/api/config');
+      const response = await fetch('https://task-jce2.onrender.com/api/config');
       const config = await response.json();
   
      

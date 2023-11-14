@@ -17,7 +17,7 @@ const Edittask = () => {
   useEffect(() => {
     const fetchTaskDetails = async () => {
       try {
-        const response = await fetch(`https://backtask-gkuo.onrender.com/api/v1/tasks/${id}`);
+        const response = await fetch(`https://task-jce2.onrender.com/api/v1/tasks/${id}`);
         if (response.ok) {
           const data = await response.json();
           setTask(data.task);
