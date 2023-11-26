@@ -52,7 +52,7 @@ const Newtask = () => {
     try {
       
       
-      const response = await fetch('http://localhost:5000/api/v1/tasks', {
+      const response = await fetch('https://taskbac.onrender.com/api/v1/tasks', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -3,6 +3,7 @@ import { useAuth } from '../register/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
 const RegisterForm = () => {
+  const navigate = useNavigate();
   const { setAccessToken } = useAuth();
   const [username, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -23,7 +24,7 @@ const RegisterForm = () => {
     e.preventDefault();
 
     try {
-      let response = await fetch("http://localhost:5000/api/v1/auth/register", {
+      let response = await fetch("https://taskbac.onrender.com/api/v1/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -35,6 +36,7 @@ const RegisterForm = () => {
         const data = await response.json();
         console.log('registered')
         const accessToken = data.accessToken;
+        navigate('/all');
 
         // Store the access token in the context
         setAccessToken(accessToken);
