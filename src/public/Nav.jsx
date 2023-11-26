@@ -26,9 +26,12 @@ const Nav = () => {
         {!isNew && '/all'&&(
 
           <li >
-            <Link className="text-decoration-none text-dark" to='/new'> New Task</Link>
+            <Link className="text-decoration-none text-dark" to='/new'> New Task</Link> 
           </li>
         )}
+         <li >
+            <Link className="text-decoration-none text-dark" to='/login'> LOGIN</Link> 
+          </li>
            
             
           {!isAbout && '/all'&&(
@@ -38,7 +41,7 @@ const Nav = () => {
           </li>
           )}
           
-          <Link className="text-decoration-none text-dark " to='./new'> <img className="profile" src={Profile} alt="" /></Link>
+          <Link className="text-decoration-none text-dark " to='./register'> <img className="profile" src={Profile} alt="" /></Link>
 
           
         </ul>

@@ -3,8 +3,10 @@ import { Link, useParams } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import arrow from '../../assets/arrow.svg';
 import { useNavigate } from 'react-router-dom';
-
+import { useAuth } from '../../public/register/AuthContext';
 const Edittask = () => {
+  const authContext = useAuth();
+  const { accessToken,user } = authContext;
   const { id } = useParams();
   const navigate = useNavigate();
   const [task, setTask] = useState({
@@ -17,7 +19,12 @@ const Edittask = () => {
   useEffect(() => {
     const fetchTaskDetails = async () => {
       try {
-        const response = await fetch(`https://task-jce2.onrender.com/api/v1/tasks/${id}`);
+        const response = await fetch(`http://localhost:5000/api/v1/tasks/${id}`, {
+          headers: {
+            'Authorization': `Bearer ${accessToken}`,
+          },
+        });
+  
         if (response.ok) {
           const data = await response.json();
           setTask(data.task);
@@ -30,14 +37,15 @@ const Edittask = () => {
     };
 
     fetchTaskDetails();
-  }, [id]);
+  }, [id,accessToken, user]);
 
   const handleDoneClick = async () => {
     try {
-      const response = await fetch(`https://task-jce2.onrender.com/api/v1/tasks/${id}`, {
+      const response = await fetch(`https://taskbac.onrender.com/api/v1/tasks/${id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${accessToken}`,
         },
         body: JSON.stringify({
           taskTittle: task.taskTittle,

@@ -5,11 +5,16 @@ import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
 // import fetchConfig from '../fetch/Fetch';
+import { useAuth } from '../../public/register/AuthContext';
 
 
 
 const Newtask = () => {
+  const authContext = useAuth();
+    const { accessToken, user } = authContext;
+ 
   const navigate = useNavigate();
+  
   const [taskTittle, setTaskTitle] = useState('');
   const [description, setDescription] = useState('');
   const [tags, setSelectedPriority] = useState('');
@@ -24,7 +29,7 @@ const Newtask = () => {
 
   const fetchConfig = async () => {
     try {
-      const response = await fetch('https://task-jce2.onrender.com/api/config');
+      const response = await fetch('https://taskbac.onrender.com/api/config');
       const config = await response.json();
   
      
@@ -45,15 +50,19 @@ const Newtask = () => {
   const sendTaskToServer = async () => {
       
     try {
-      const response = await fetch('https://task-jce2.onrender.com/api/v1/tasks', {
+      
+      
+      const response = await fetch('http://localhost:5000/api/v1/tasks', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${accessToken}`,
         },
         body: JSON.stringify({
           taskTittle,
           description,
           tags: tags,
+         
         }),
       });
 
@@ -61,12 +70,18 @@ const Newtask = () => {
         // Task added successfully
         console.log('Task added successfully');
         navigate('/all');
-      
-       
       } else {
-        alert('Task input cant be empty')
-       
-        console.error('Error adding task:', response.statusText);
+        // Handle specific HTTP error codes (e.g., 400 Bad Request, 401 Unauthorized)
+        if (response.status === 401) {
+          console.error('Unauthorized: Please log in again.');
+        } else if (response.status === 400) {
+          console.error('Bad Request: Invalid data submitted.');
+        } else {
+          console.error('Error adding task:', response.statusText);
+        }
+  
+        // Optionally show an error message to the user
+        alert('Error adding task. Please try again.');
       }
     } catch (error) {
       console.error('Error adding task:', error);
