@@ -4,11 +4,12 @@ import Cookies from 'js-cookie';
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
+ 
   const [accessToken, setAccessToken] = useState(null);
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  // console.log('jwtCookie:', jwtCookie);
+
 
   useEffect(() => {
     const jwtCookie = Cookies.get('jwt');

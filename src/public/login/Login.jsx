@@ -1,4 +1,4 @@
-// LoginForm.js
+
 import React, { useState } from 'react';
 import { useAuth } from '../register/AuthContext';
 import { useNavigate } from 'react-router-dom';
@@ -26,6 +26,7 @@ const LoginForm = () => {
     try {
       const response = await fetch('https://taskbac.onrender.com/api/v1/auth/login', {
         method: 'POST',
+        credentials:'include',
        
         headers: {
           'Content-Type': 'application/json',

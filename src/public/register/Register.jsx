@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useAuth } from '../register/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { Container, Form, Button } from 'react-bootstrap';
 
 const RegisterForm = () => {
   const navigate = useNavigate();
@@ -48,45 +49,47 @@ const RegisterForm = () => {
     } catch (error) {
       console.error("Registration error:", error);
     }  
-}
+  }
 
   return (
-    <div>
-      <h2>Register</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Username:
-          <input
+    <Container className="mt-5">
+      <h2 className="text-center">Register</h2>
+      <Form onSubmit={handleSubmit}>
+        <Form.Group controlId="formUsername">
+          <Form.Label>Username:</Form.Label>
+          <Form.Control
             type="text"
             name="username"
             value={username}
             onChange={handleChange}
           />
-        </label>
-        <br />
-        <label>
-          Email:
-          <input
+        </Form.Group>
+
+        <Form.Group controlId="formEmail">
+          <Form.Label>Email:</Form.Label>
+          <Form.Control
             type="text"
             name="email"
             value={email}
             onChange={handleChange}
           />
-        </label>
-        <br />
-        <label>
-          Password:
-          <input
+        </Form.Group>
+
+        <Form.Group controlId="formPassword">
+          <Form.Label>Password:</Form.Label>
+          <Form.Control
             type="password"
             name="password"
             value={password}
             onChange={handleChange}
           />
-        </label>
-        <br />
-        <button type="submit">Register</button>
-      </form>
-    </div>
+        </Form.Group>
+
+        <Button variant="dark" type="submit" className="w-100">
+          Register
+        </Button>
+      </Form>
+    </Container>
   );
 };
 

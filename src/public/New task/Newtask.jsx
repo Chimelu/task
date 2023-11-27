@@ -49,10 +49,16 @@ const Newtask = () => {
 
   const sendTaskToServer = async () => {
       
-    try {
+    try { 
+      if (!accessToken || !user) {
+      console.error('User not authenticated. Redirecting to login page.');
+      // You can redirect the user to the login or registration page
+      navigate('/register'); // Change '/login' to the actual route for your login page
+      return;
+     }
       
       
-      const response = await fetch('https://taskbac.onrender.com/api/v1/tasks', {
+      const response = await fetch('https://taskbac.onrender.comm/api/v1/tasks', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -71,9 +77,10 @@ const Newtask = () => {
         console.log('Task added successfully');
         navigate('/all');
       } else {
-        // Handle specific HTTP error codes (e.g., 400 Bad Request, 401 Unauthorized)
+      
         if (response.status === 401) {
           console.error('Unauthorized: Please log in again.');
+          // alert('log in or register to add task')
         } else if (response.status === 400) {
           console.error('Bad Request: Invalid data submitted.');
         } else {

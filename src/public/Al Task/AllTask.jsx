@@ -5,11 +5,12 @@ import Delete from '../../assets/fluent_delete-24-regular.svg';
 import './AllTask.css';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../public/register/AuthContext';
-
+import Spinner from 'react-bootstrap/Spinner';
 const AllTasks = () => {
   // const  user  = useAuth();
-  const {accessToken} = useAuth();
+  const {accessToken,user} = useAuth();
   const [tasks, setTasks] = useState([]);
+  const [loading, setLoading] = useState(true);
   console.log("first")
 
   useEffect(() => {
@@ -21,7 +22,6 @@ const AllTasks = () => {
     try {
       const response = await fetch(`https://taskbac.onrender.com/api/v1/tasks/${taskID}`, {
         method: 'DELETE',
-        credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${accessToken}`,
@@ -42,6 +42,10 @@ const AllTasks = () => {
   const fetchTasks = async () => {
     try {
       const response = await fetch('https://taskbac.onrender.com/api/v1/tasks', {
+        method: 'GET',
+        credentials:'include',
+        
+
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${accessToken}`,
@@ -56,6 +60,8 @@ const AllTasks = () => {
       }
     } catch (error) {
       console.error('Error fetching tasks:', error);
+    }finally{
+      setLoading(false)
     }
   };
 
@@ -75,7 +81,14 @@ const AllTasks = () => {
         </Link>
       </div>
       <div className='d-flex flex-column-reverse'>
-        {tasks.map((task) => (
+      {loading && <Spinner animation="border" role="status" />} {/* Display spinner while loading */}
+        {!loading && tasks.length === 0 && (
+          <div className="text-center mt-3">
+            <p>No tasks found. Add a new task.</p>
+          </div>
+        )}
+        {/* {!loading && */}
+       { tasks.map((task) => (
           <div key={task._id} className='mt-5 border rounded'>
             <div className='d-flex cont justify-content-between align-items-center px-2'>
               <h4 className={task.tags === 'important' ? 'text-success ms-1' : task.tags === 'urgent' ? 'text-danger ms-3' : ''}>
